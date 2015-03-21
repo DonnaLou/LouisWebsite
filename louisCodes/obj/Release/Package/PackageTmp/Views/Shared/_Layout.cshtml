@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/ico" href="~/Images/favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script type="text/javascript">
+    window.appInsights={queue:[],applicationInsightsId:null,accountId:null,appUserId:null,configUrl:null,start:function(n){function u(n,t){n[t]=function(){var i=arguments;n.queue.push(function(){n[t].apply(n,i)})}}function f(n){var t=document.createElement("script");return t.type="text/javascript",t.src=n,t.async=!0,t}function r(){i.appendChild(f("//az416426.vo.msecnd.net/scripts/ai.0.js"))}var i,t;this.applicationInsightsId=n;u(this,"logEvent");u(this,"logPageView");i=document.getElementsByTagName("script")[0].parentNode;this.configUrl===null?r():(t=f(this.configUrl),t.onload=r,t.onerror=r,i.appendChild(t));this.start=function(){}}};
+
+    appInsights.configUrl="/ApplicationInsights.axd";
+appInsights.start();
+    appInsights.logPageView();
+</script>
+    <script>
+
+    $(document).ready(function () {
+        $('#nav .navbar-nav li>a').on('click', function (event) {
+            event.preventDefault();
+            var sectionID = $(this).attr("href");
+            scrollToID(sectionID, 750);
+        });
+
+        function scrollToID(id, speed) {
+            var offSet = 70;
+            var targetOffset = $(id).offset().top;
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+        }
+    });
+    </script>
+
+    <style>
+    #nav{
+    position:fixed;
+    background: rgba(0,0,0, 0.5);
+    right: 10px;
+    top: 10px;
+    z-index:999;
+    }
+
+    #nav a{
+    color: white;
+    }
+        </style>
+
+</head>
+<body>
+    <nav id="nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#projects">Code Projects</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+            </div>
+    </nav>
+    <div class="container body-content">
+        
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="col-xs-8 col-xs-offset-2">
+                <p>&copy; @DateTime.Now.Year - Louis Yu (built with ASP.NET)</p>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
