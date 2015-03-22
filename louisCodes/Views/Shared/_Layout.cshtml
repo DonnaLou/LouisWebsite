@@ -51,10 +51,9 @@ appInsights.start();
 <body>
     
     <div class="container body-content">
-
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
+        <nav class="navbar navbar-default navbar-fixed-top " role="navigation" >
+            <div class="container-fluid ">
+                <div class="navbar-header ">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -77,8 +76,10 @@ appInsights.start();
                 </div><!-- /.navbar-collapse -->
             </div>
         </nav>
-        
-        @RenderBody()
+
+        <div style="margin-top:10px;">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <div class="col-xs-8 col-xs-offset-2">
